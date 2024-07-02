@@ -9,10 +9,10 @@ import { StoreContext } from '../../context/StoreContext';
 function ExploreMenu({category,setcategory}) {
 
   return (
-    <div className='border-b-2 border-zinc-300 '>
+    <div className='border-b-2 border-zinc-300 ' id='explore'>
         <div className='w-full flex flex-col gap-2 py-4'>
             <h1 className='font-bold text-2xl sm:text-4xl ' >Explore Menu</h1>
-            <p> Choose your food from a diverse manu featuring from there...</p>
+            <p className='text-lg font-semibold'> Choose your food from a diverse manu featuring from there...</p>
         </div>
             <Swiper
         slidesPerView={1}

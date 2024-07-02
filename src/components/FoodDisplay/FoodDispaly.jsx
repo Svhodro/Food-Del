@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { StoreContext } from '../../context/StoreContext'
 import FoodItem from '../FoodItem/FoodItem'
 
-function FoodDispaly() {
+function FoodDispaly({category}) {
    const{food_list}= useContext(StoreContext)
    
   return (
@@ -12,7 +12,10 @@ function FoodDispaly() {
       </div>
       <div className='flex justify-center items-center flex-wrap gap-2 py-10'>
         {food_list.map((item,index)=>{
-              return <FoodItem key={index} item={item}/>
+          if (category==='All' || category===item.category) {
+            return <FoodItem key={index} item={item}/>
+          }
+              
         })}
       </div>
     </div>
