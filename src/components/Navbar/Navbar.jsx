@@ -67,39 +67,46 @@ function Navbar() {
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-4 font-base text-lg cursor-pointer">
-        <li
-              onClick={() => {
-                setmanu("home");
-              }}
-              className={`${manu == "home" ? "border-b-2 border-black" : "border-none"}`}
-            >
-              <Link to="/">  home</Link>
-            
-            </li>
-            <li
-              onClick={() => {
-                setmanu("menu");
-              }}
-              className={`${manu == "menu" ? "border-b-2 border-black" : "border-none"}`}
-            >
-              <a href="#explore">menu</a>
-            </li>
-            <li
-              onClick={() => {
-                setmanu("mobile");
-              }}
-              className={`${manu == "mobile" ? "border-b-2 border-black" : "border-none"}`}
-            >
-              <a href="#app">mobile App</a>
-            </li>
-            <li
-              onClick={() => {
-                setmanu("contact");
-              }}
-              className={`${manu == "contact" ? "border-b-2 border-black" : "border-none"}`}
-            >
-              <a href="#contact">contact us</a>
-            </li>
+          <li
+            onClick={() => {
+              setmanu("home");
+            }}
+            className={`${
+              manu == "home" ? "border-b-2 border-black" : "border-none"
+            }`}
+          >
+            <Link to="/"> home</Link>
+          </li>
+          <li
+            onClick={() => {
+              setmanu("menu");
+            }}
+            className={`${
+              manu == "menu" ? "border-b-2 border-black" : "border-none"
+            }`}
+          >
+            <a href="#explore">menu</a>
+          </li>
+          <li
+            onClick={() => {
+              setmanu("mobile");
+            }}
+            className={`${
+              manu == "mobile" ? "border-b-2 border-black" : "border-none"
+            }`}
+          >
+            <a href="#app">mobile App</a>
+          </li>
+          <li
+            onClick={() => {
+              setmanu("contact");
+            }}
+            className={`${
+              manu == "contact" ? "border-b-2 border-black" : "border-none"
+            }`}
+          >
+            <a href="#contact">contact us</a>
+          </li>
         </ul>
       </div>
       <div className="navbar-end gap-5">
@@ -111,7 +118,57 @@ function Navbar() {
             <TiShoppingCart className="size-8" />
           </div>
         </div>
-        <a className="btn">signin</a>
+        {/* You can open the modal using document.getElementById('ID').showModal() method */}
+        <button
+          className="btn"
+          onClick={() => document.getElementById("my_modal_3").showModal()}
+        >
+          signin
+        </button>
+        <dialog id="my_modal_3" className="modal">
+          <div className="modal-box flex justify-center items-center">
+            <form method="dialog">
+              {/* if there is a button in form, it will close the modal */}
+              <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                ✕
+              </button>
+            </form>
+            <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+              <form className="card-body ">
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Email</span>
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="email"
+                    className="input input-bordered"
+                    required
+                  />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Password</span>
+                  </label>
+                  <input
+                    type="password"
+                    placeholder="password"
+                    className="input input-bordered"
+                    required
+                  />
+                  <label className="label">
+                    <a href="#" className="label-text-alt link link-hover">
+                      Forgot password?
+                    </a>
+                  </label>
+                </div>
+                <div className="form-control mt-6">
+                  <button className="btn btn-primary">Login</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </dialog>
       </div>
     </div>
   );
