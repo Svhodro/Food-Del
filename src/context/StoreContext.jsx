@@ -16,12 +16,21 @@ const adtocart=(itemid)=>{
 const removecart=(itemid)=>{
   setCartItem((prev)=>({...prev,[itemid]:prev[itemid]-1}))
 } 
-useEffect(()=>{
-console.log(cartItem);
-},[cartItem])
+
+const getTotalCartAmount=()=>{
+  let totalAmount=0;
+  for (const item in cartItem) {
+    if (cartItem[item]>0) {
+      let iteminfo=food_list.find((product)=>product._id==item)
+      totalAmount+=iteminfo.price* cartItem[item]
+    }
+    
+  }
+  return totalAmount
+}
 
   return (
-    <StoreContext.Provider value={{food_list , cartItem,adtocart,removecart}}>
+    <StoreContext.Provider value={{food_list , cartItem,adtocart,removecart,getTotalCartAmount}}>
       {children}
     </StoreContext.Provider>
   );

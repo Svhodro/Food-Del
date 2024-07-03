@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { TiShoppingCart } from "react-icons/ti";
 function Navbar() {
   const [manu, setmanu] = useState("home");
+  const [curentstate, setCurentstate] = useState("signup");
   return (
     <div className="navbar bg-base-100 my-4">
       <div className="navbar-start">
@@ -63,7 +64,8 @@ function Navbar() {
             </li>
           </ul>
         </div>
-        <img src={assets.logo} alt="img" className="w-20 sm:w-28" />
+        <Link to="/"><img src={assets.logo} alt="img" className="w-20 sm:w-28" /></Link>
+        
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-4 font-base text-lg cursor-pointer">
@@ -115,7 +117,9 @@ function Navbar() {
             0
           </span>
           <div className=" grid h-10 w-10 place-items-center">
-            <TiShoppingCart className="size-8" />
+            <Link to="/cart">          
+              <TiShoppingCart className="size-8" />
+            </Link>
           </div>
         </div>
         {/* You can open the modal using document.getElementById('ID').showModal() method */}
@@ -126,47 +130,128 @@ function Navbar() {
           signin
         </button>
         <dialog id="my_modal_3" className="modal">
-          <div className="modal-box flex justify-center items-center">
+          <div className="modal-box flex justify-center items-center bg-transparent">
             <form method="dialog">
               {/* if there is a button in form, it will close the modal */}
-              <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+              <button className="btn btn-sm btn-circle text-white btn-ghost absolute right-2 top-2">
                 ✕
               </button>
             </form>
-            <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-              <form className="card-body ">
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Email</span>
-                  </label>
-                  <input
-                    type="email"
-                    placeholder="email"
-                    className="input input-bordered"
-                    required
-                  />
-                </div>
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Password</span>
-                  </label>
-                  <input
-                    type="password"
-                    placeholder="password"
-                    className="input input-bordered"
-                    required
-                  />
-                  <label className="label">
-                    <a href="#" className="label-text-alt link link-hover">
-                      Forgot password?
-                    </a>
-                  </label>
-                </div>
-                <div className="form-control mt-6">
-                  <button className="btn btn-primary">Login</button>
-                </div>
-              </form>
-            </div>
+            {curentstate == "signup" ? (
+              <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+                <form className="card-body ">
+                  <div>
+                    <p className="text-center font-bold text-3xl my-4">
+                      Signup
+                    </p>
+                  </div>
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">Name</span>
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="name"
+                      className="input input-bordered"
+                      required
+                    />
+                  </div>
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">Email</span>
+                    </label>
+                    <input
+                      type="email"
+                      placeholder="email"
+                      className="input input-bordered"
+                      required
+                    />
+                  </div>
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">Password</span>
+                    </label>
+                    <input
+                      type="password"
+                      placeholder="password"
+                      className="input input-bordered"
+                      required
+                    />
+                  </div>
+                  <div className="form-control mt-6">
+                    <button className="btn border-t-orange-500 bg-orange-500">
+                      Create account
+                    </button>
+                  </div>
+                  <div>
+                    <p>
+                      Already have an account ?
+                      <span
+                        className="font-semibold cursor-pointer"
+                        onClick={() => setCurentstate("login")}
+                      >
+                        Login here
+                      </span>
+                    </p>
+                  </div>
+                </form>
+              </div>
+            ) : (
+              <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+                <form className="card-body ">
+                  <div>
+                    <p className="text-center font-bold text-3xl my-4">
+                      Signin
+                    </p>
+                  </div>
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">Email</span>
+                    </label>
+                    <input
+                      type="email"
+                      placeholder="email"
+                      className="input input-bordered"
+                      required
+                    />
+                  </div>
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">Password</span>
+                    </label>
+                    <input
+                      type="password"
+                      placeholder="password"
+                      className="input input-bordered"
+                      required
+                    />
+                  </div>
+                  <div className="form-control mt-6">
+                    <button className="btn border-t-orange-500 bg-orange-500">
+                      Login
+                    </button>
+                  </div>
+                  <div>
+                    <div className="flex justify-center items-start gap-3  mt-1 ">
+                      <input type="checkbox" required />
+                      <p className="text-base">
+                        By continuing,i agree to the terms of ase & privacy
+                        policy
+                      </p>
+                    </div>
+                    <p className="text-start my-2">
+                      Create a new account ?
+                      <span
+                        className="font-semibold cursor-pointer"
+                        onClick={() => setCurentstate("signup")}
+                      >
+                        Click here
+                      </span>
+                    </p>
+                  </div>
+                </form>
+              </div>
+            )}
           </div>
         </dialog>
       </div>
