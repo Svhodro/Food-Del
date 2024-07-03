@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { assets } from "../../assets/assets";
 import { Link } from "react-router-dom";
 import { TiShoppingCart } from "react-icons/ti";
+import { StoreContext } from "../../context/StoreContext";
 function Navbar() {
   const [manu, setmanu] = useState("home");
   const [curentstate, setCurentstate] = useState("signup");
+  const {getTotalCartAmount}=useContext(StoreContext)
   return (
     <div className="navbar bg-base-100 my-4">
       <div className="navbar-start">
@@ -113,9 +115,10 @@ function Navbar() {
       </div>
       <div className="navbar-end gap-5">
         <div className="indicator">
-          <span className="indicator-item badge badge-secondary bg-slate-800 border-slate-800 text-white ">
-            0
-          </span>
+          {getTotalCartAmount()===0?<h1></h1>:    <span className="indicator-item size-3 rounded-full badge badge-secondary bg-orange-500 border-orange-500 text-white ">
+           
+           </span>}
+      
           <div className=" grid h-10 w-10 place-items-center">
             <Link to="/cart">          
               <TiShoppingCart className="size-8" />

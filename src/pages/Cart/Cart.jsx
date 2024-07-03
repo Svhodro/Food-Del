@@ -49,9 +49,9 @@ function Cart() {
         <div className="w-1/2 ">
         <h1 className="text-4xl my-2">Cart Total</h1>
           <div className="text-2xl font-serif flex flex-col gap-1 pt-2 ">
-            <p className="border-t">Subtotal : {getTotalCartAmount()}</p>
-            <p className="border-t">Delevary Fee : 2</p>
-            <p className="border-t">Total : {getTotalCartAmount()+2}</p>
+            <p className="border-t">Subtotal : ${getTotalCartAmount()}</p>
+            <p className="border-t">Delevary Fee : $2</p>
+            <p className="border-t">Total : ${getTotalCartAmount()+2}</p>
            
           </div>
           <button className="btn bg-orange-500 border-t-orange-500 text-white my-6" >Proceed To Checkout</button>
