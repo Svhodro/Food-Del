@@ -11,8 +11,8 @@ function Header() {
           backgroundImage: `url(${assets.header_img})`,
         }}
       >
-        <div className="hero-overlay bg-opacity-10"></div>
-        <div className="hero-content  text-white">
+        <div className="hero-overlay bg-opacity-10 px-10"></div>
+        <div className="hero-content  text-white px-10">
           <div className="max-w-md">
             <h1 className="mb-5 text-3xl sm:text-5xl font-bold">
               <Typewriter

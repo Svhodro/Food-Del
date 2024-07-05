@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { StoreContext } from "../../context/StoreContext";
 import { RxCross2 } from "react-icons/rx";
+import { Link } from "react-router-dom";
+
 function Cart() {
   const { food_list, cartItem, removecart ,getTotalCartAmount} = useContext(StoreContext);
   return (
@@ -49,12 +51,13 @@ function Cart() {
         <div className="w-1/2 ">
         <h1 className="text-4xl my-2">Cart Total</h1>
           <div className="text-2xl font-serif flex flex-col gap-1 pt-2 ">
-            <p className="border-t">Subtotal : ${getTotalCartAmount()}</p>
-            <p className="border-t">Delevary Fee : $2</p>
-            <p className="border-t">Total : ${getTotalCartAmount()+2}</p>
+            <p className="border-t">Subtotal : ${getTotalCartAmount()===0?0:getTotalCartAmount()}</p>
+            <p className="border-t">Delevary Fee : ${getTotalCartAmount()===0?0:2}</p>
+            <p className="border-t">Total : ${getTotalCartAmount()===0?0:getTotalCartAmount()+2}</p>
            
           </div>
-          <button className="btn bg-orange-500 border-t-orange-500 text-white my-6" >Proceed To Checkout</button>
+          <Link to='/plaseorder'><button  className={`${getTotalCartAmount()===0?'hidden':""} btn bg-orange-500 border-t-orange-500 text-white my-6`} >Proceed To Checkout</button></Link>
+          
         </div>
         <div className="w-1/2 flex flex-col items-center gap-4">
           <p className="text-start text-xl " >if you have a promo code enter it here</p>
